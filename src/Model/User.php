@@ -315,8 +315,8 @@ class User implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'countystate', the character length must be smaller than or equal to 100.";
         }
 
-        if ((mb_strlen($this->container['countystate']) < 1)) {
-            $invalidProperties[] = "invalid value for 'countystate', the character length must be bigger than or equal to 1.";
+        if ((mb_strlen($this->container['countystate']) < 0)) {
+            $invalidProperties[] = "invalid value for 'countystate', the character length must be bigger than or equal to 0.";
         }
 
         if ($this->container['country'] === null) {
@@ -557,8 +557,8 @@ class User implements ModelInterface, ArrayAccess
         if ((mb_strlen($countystate) > 100)) {
             throw new \InvalidArgumentException('invalid length for $countystate when calling User., must be smaller than or equal to 100.');
         }
-        if ((mb_strlen($countystate) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $countystate when calling User., must be bigger than or equal to 1.');
+        if ((mb_strlen($countystate) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $countystate when calling User., must be bigger than or equal to 0.');
         }
 
         $this->container['countystate'] = $countystate;
