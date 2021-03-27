@@ -343,8 +343,8 @@ class User implements ModelInterface, ArrayAccess
             $invalidProperties[] = "invalid value for 'subdivision', the character length must be smaller than or equal to 6.";
         }
 
-        if (!is_null($this->container['subdivision']) && (mb_strlen($this->container['subdivision']) < 1)) {
-            $invalidProperties[] = "invalid value for 'subdivision', the character length must be bigger than or equal to 1.";
+        if (!is_null($this->container['subdivision']) && (mb_strlen($this->container['subdivision']) < 0)) {
+            $invalidProperties[] = "invalid value for 'subdivision', the character length must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -715,8 +715,8 @@ class User implements ModelInterface, ArrayAccess
         if (!is_null($subdivision) && (mb_strlen($subdivision) > 6)) {
             throw new \InvalidArgumentException('invalid length for $subdivision when calling User., must be smaller than or equal to 6.');
         }
-        if (!is_null($subdivision) && (mb_strlen($subdivision) < 1)) {
-            throw new \InvalidArgumentException('invalid length for $subdivision when calling User., must be bigger than or equal to 1.');
+        if (!is_null($subdivision) && (mb_strlen($subdivision) < 0)) {
+            throw new \InvalidArgumentException('invalid length for $subdivision when calling User., must be bigger than or equal to 0.');
         }
 
         $this->container['subdivision'] = $subdivision;
